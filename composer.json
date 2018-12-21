@@ -1,0 +1,27 @@
+{
+    "name": "bdspider/crawler",
+    "description": "crawler,spider for phpQuery。",
+    "keywords":["bdcrawler","phpQuery","spider","crawler"],
+    "require": {
+        "PHP":">=7.0",
+        "symfony/dom-crawler": "^1.1"
+    },
+    "suggest":{
+
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bdspider",
+            "email": "bspider@126.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "BDCrawler\\":"src"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3"
+    }
+}
