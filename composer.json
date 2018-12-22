@@ -4,7 +4,7 @@
     "keywords":["bdcrawler","phpQuery","spider","crawler"],
     "require": {
         "PHP":">=7.0",
-        "symfony/dom-crawler": "^1.1"
+        "symfony/dom-crawler": "~4.0"
     },
     "suggest":{
 
