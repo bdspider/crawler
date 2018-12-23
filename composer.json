@@ -18,7 +18,7 @@
     ],
     "autoload":{
         "psr-4":{
-            "BDCrawler\\":"src"
+            "BDSpider\\":"src"
         }
     },
     "require-dev": {
