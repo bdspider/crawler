@@ -26,16 +26,12 @@ class BDCrawler
     {
         $this->crawler = new Crawler($html);
     }
-    
-    
-    
+
     public static function html($html)
     {
         return new static($html);
     }
-    
-    
-    
+
     public function crawling(array $rules, string $range = null, Crawler $crawler = null)
     {
         if (!is_null($range)) {
@@ -98,7 +94,12 @@ class BDCrawler
                         }
                     }
                 } else if($items->count()==1) {
-                    $result[$i][$name] = $this->getAttribute($items->getNode(0), $attribute, $asRmv, $callback, $name);
+                    if (strpos($name, ':') !== false) {
+                        list($firstName, $lastName) = explode(':', $name, 2);
+                        $result[$i][$firstName][0][$lastName] = $this->getAttribute($items->getNode(0), $attribute, $asRmv, $callback, $name);
+                    } else {
+                        $result[$i][$name] = $this->getAttribute($items->getNode(0), $attribute, $asRmv, $callback, $name);
+                    }
                 } else {
                     $result[$i][$name] = null;
                 }
