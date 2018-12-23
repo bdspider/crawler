@@ -26,9 +26,16 @@ class BDCrawler
     {
         $this->crawler = new Crawler($html);
     }
-
-
-
+    
+    
+    
+    public static function html($html)
+    {
+        return new static($html);
+    }
+    
+    
+    
     public function crawling(array $rules, string $range = null, Crawler $crawler = null)
     {
         if (!is_null($range)) {
