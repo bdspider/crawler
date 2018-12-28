@@ -119,6 +119,12 @@ class BDCrawler
         }
 
         $me = new Crawler($elem);
+        if ($asRmv) {
+            $rmvlist = $me->children($asRmv);
+            foreach($rmvlist as $one) {
+                $elem->removeChild($one);
+            }
+        }
 
         $result = null;
         if ($attr == 'text') {
@@ -129,7 +135,7 @@ class BDCrawler
             $result = '';
             foreach ($me->getNode(0)->childNodes as $child) {
                 if ($child->nodeName == '#text'){
-                    $result .= trim($child->textContent);
+                    $result .= trim($child->nodeValue) . "\r\n";
                 }
             }
         } else {
@@ -138,6 +144,7 @@ class BDCrawler
         if ($callback instanceof \Closure) {
             $result = \Closure::fromCallable($callback)->call($this, $result, $name);
         }
+        
         return $result;
     }
 
