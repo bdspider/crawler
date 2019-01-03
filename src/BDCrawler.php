@@ -46,8 +46,6 @@ class BDCrawler
             $attribute = $rule[1];
             $asRmv = $rule[2] ?? null;
             $callback = $rule[3] ?? null;
-            // dump($name);
-            // dump($attribute);
             $items = $this->crawler->filter($selector);
             if ($items->count() > 1) {
                 foreach ($items as $key => $item) {
@@ -143,6 +141,8 @@ class BDCrawler
         }
         if ($callback instanceof \Closure) {
             $result = \Closure::fromCallable($callback)->call($this, $result, $name);
+        } else if (is_string($callback) && is_callable($callback)) {
+            $result = $callback($result);
         }
         
         return $result;
