@@ -134,7 +134,13 @@ class BDCrawler
             foreach ($me->getNode(0)->childNodes as $child) {
                 if ($child->nodeName == '#text'){
                     $result .= trim($child->nodeValue) . "\r\n";
-                }
+                } else if ($child->hasChildNodes()){
+					foreach ($child->childNodes as $sc) {
+						$result .= trim($sc->nodeValue) . "\r\n";
+					}
+				} else {
+					$result .= trim($child->nodeValue) . "\r\n";
+				}
             }
         } else {
             $result = $elem->getAttribute($attr);
